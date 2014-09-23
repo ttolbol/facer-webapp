@@ -52,15 +52,16 @@ body {
     text-decoration: none;
 }
 
-#layerlist {
+.list {
     list-style: none;
     margin-top: 16px;
+    height: 480px;
+    overflow-y: scroll;
 }
 
-#layerlist li {
+.list li {
     height: 24px;
     padding-left: 32px;
-    cursor: pointer;
 }
 
 #layerlist li:hover {
