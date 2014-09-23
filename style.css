@@ -45,6 +45,36 @@ body {
     width: 256px;
 }
 
+#newlayerbutton {
+    display: block;
+    text-align: center;
+    float: right;
+    text-decoration: none;
+}
+
+#layerlist {
+    list-style: none;
+    margin-top: 16px;
+}
+
+#layerlist li {
+    height: 24px;
+    padding-left: 32px;
+    cursor: pointer;
+}
+
+#layerlist li:hover {
+    background: #F0F0F0;
+}
+
+#layerlist li.active {
+    background: #CCDEF3;
+}
+
+#layerlist li.active:hover {
+    background: #A3C1E5;
+}
+
 #preview {
     width: 512px;
     min-width: 512px;
