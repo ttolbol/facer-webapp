@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,500italic,700italic,700|Roboto+Condensed:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css'>
+        <script src="script.js"></script>
     </head>
     <body>
         <div id="header">
@@ -14,8 +15,26 @@
                 <a id="newface" href="#" title="New watchface">+</a>
             </div>
         </div>
-        <div id="preview">
-            Untitled watchface
+        <div id="container">
+            <div class="quarter">
+                <div id="layers" class="center window">
+                    Layers
+                </div>
+            </div>
+            <div class="half">
+                <div id="preview" class="center window">
+                    <input id="watchtitle" type="text" value="Untitled watchface"/>
+                    <canvas id="watchcanvas" class="center" width="320" height="320">
+                    </canvas>
+                    <div id="overlay" class="center">
+                    </div>
+                </div>
+            </div>
+            <div class="quarter">
+                <div id="parameters" class="center window">
+                    Parameters
+                </div>
+            </div>
         </div>
     </body>
 </html>
