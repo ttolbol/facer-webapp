@@ -1,48 +1,288 @@
-<!DOCTYPE HTML>
-<html>
-    <head>
-        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-        <title>Facer web</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,500italic,700italic,700|Roboto+Condensed:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css'>
-        <script src="layer.js"></script>
-        <script src="script.js"></script>
-    </head>
-    <body>
-        <div id="header">
-            <div id="menubar">
-                <a id="import" href="#" title="Import a watchface"><img src="importface_small.png" alt=""/></a>
-                <a id="newface" href="#" title="New watchface">+</a>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Facer Web</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,500italic,700italic,700|Roboto+Condensed:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container-fluid top">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <span class="logo"><img src="images/logo.png" alt="Facer web"></span>
+
+            <div class="col-xs-6 pull-right text-right">
+              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#NewWatchface"><span class="glyphicon glyphicon-plus"></span> New Facer Watchface</button>
             </div>
+          </div>
         </div>
-        <div id="container">
-            <div class="quarter">
-                <div id="layers" class="center window">
-                    <a id="newlayerbutton" href="#"><img src="newlayer.png" alt="New layer"/></a>
-                    <p>Layers</p>
-                    <ul id="layerlist" class="list">
-                    </ul>
-                </div>
-            </div>
-            <div class="half">
-                <div id="preview" class="center window">
-                    <input id="watchtitle" type="text" value="Untitled watchface"/>
-                    <canvas id="watchcanvas" class="center" width="320" height="320">
-                    </canvas>
-                    <div id="overlay" class="center">
+      </div>
+    </div>
+    <div class="container content">
+      <div class="row">
+        <div class="col-xs-3">
+          <div class="col-xs-12 card" id="layers">
+            <h4>Layers</h4><a class="floatbtn addlayer tooltiptrigger" id="newlayerbutton" data-toggle="tooltip" data-placement="bottom" title="Add a layer"><span class="glyphicon glyphicon-plus"></span></a>
+            <ul class="layers" id="layerlist">
+              <li><span class="glyphicon glyphicon-picture"></span> Background <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
+              <li><span class="glyphicon glyphicon-picture"></span> Hour hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
+              <li><span class="glyphicon glyphicon-picture"></span> Minute hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
+              <li><span class="glyphicon glyphicon-font"></span> Date <small>(20 aug)</small>  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
+            </ul>
+          </div>  
+        </div>
+        <div class="col-xs-6">
+          <div class="col-xs-12 card">
+            <input id="watchtitle" type="text" value="Untitled watchface"/>
+
+            <canvas id="watchcanvas" class="center" width="320" height="320">
+            </canvas>
+            <div id="overlay" class="center"></div>
+            <!-- <div class="faces">
+              <div class="moto360 center-block"></div>
+              <div class="gearlive center-block"></div>
+              <div class="gwatch center-block"></div>
+            </div> -->
+            <select class="selectface">
+              <option value="moto360">Moto360</option>
+              <option value="gwatch">LG G Watch</option>
+              <!-- <option value="gearlive">Gearlive</option> -->
+            </select>
+          </div>  
+        </div>
+        <div class="col-xs-3">
+          <div class="col-xs-12 card" id="parameters">
+            <h4>Parameters</h4> <a class="floatbtn addtag tooltiptrigger" data-toggle="tooltip" data-placement="bottom" title="Add a label to this layer"><span class="glyphicon glyphicon-tag"></span></a>
+            <form role="form" id="parameterlist">
+              <button type="button" class="btn btn-primary">Select image</button>
+              <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        Height and Width
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label for="width">Width</label>
+                        <input type="number" class="form-control" id="width" placeholder="0">
+                      </div>
+                      <div class="form-group">
+                        <label for="height">Height</label>
+                        <input type="number" class="form-control" id="height" placeholder="0">
+                      </div>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Maintain aspect ratio when scaling
+                        </label>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
-            <div class="quarter">
-                <div id="parameters" class="center window">
-                    Parameters
-                    <ul id="parameterlist" class="list">
-                        <li>X: <input class="x" type="text" value=""/></li>
-                        <li>Y: <input class="y" type="text" value=""/></li>
-                    </ul>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        Offsets, Rotation and Opacity
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label for="x-offset">x-offset</label>
+                        <input type="number" class="form-control x" id="x-offset" placeholder="0">
+                      </div>
+                      <div class="form-group">
+                        <label for="y-offset">y-offset</label>
+                        <input type="number" class="form-control y" id="y-offset" placeholder="0">
+                      </div>
+                      <div class="form-group">
+                        <label for="rotation">Rotation</label>
+                        <input type="number" class="form-control" id="rotation" placeholder="0">
+                      </div>
+                      <div class="form-group">
+                        <label for="opacity">Opacity</label>
+                        <input type="number" class="form-control" id="opacity" placeholder="0">
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                        Alignment
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <div class="form-group">
+                        <label for="alignment">Aligment</label>
+                        <select class="alignment" id="alignment">
+                          <option value="topLeft">Top left</option>
+                          <option value="topCenter">Top Center</option>
+                          <option value="topRight">Top Right</option>
+                          <option value="centerLeft">Center left</option>
+                          <option value="center">Center</option>
+                          <option value="centerRight">Center Right</option>
+                          <option value="bottomLeft">Bottom left</option>
+                          <option value="bottomCCenter">Bottom Center</option>
+                          <option value="bottomRight">Bottom Right</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Display when dimmed
+                </label>
+              </div>
+            </form>
+          </div>  
         </div>
-    </body>
+      </div>
+        <div class="col-xs-12 card spacingtop">
+          <div class="col-xs-3">
+            <h4>Test different Weather</h4>
+            <div class="form-group">
+              <label for="temp">Temperature</label>
+              <input type="number" class="form-control temp" id="temp" placeholder="0">
+            </div>
+            <div class="form-group">
+              <label for="temptype">Temperature type</label>
+              <select class="temptype" id="temptype">
+                  <option value="c">Celcius</option>
+                  <option value="f">Fahrenheit</option>
+                </select>
+            </div>
+            <div class="form-group">
+              <label for="weather">Weather type</label>
+              <select class="weather" id="weather">
+                  <option value="sunny">Sunny</option>
+                  <option value="cloudy">Cloudy</option>
+                  <option value="windy">Windy</option>
+                  <option value="clear">Clear</option>
+                  <option value="snow">Snow</option>
+                  <option value="fog">Fog</option>
+                </select>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <h4>Test different Time and Date</h4>
+            <div class="form-group">
+              <label for="date">Date</label>
+              <input type="date" class="form-control date" id="date" placeholder="0">
+            </div>
+            <div class="form-group">
+              <label for="time">Time</label>
+              <input type="time" class="form-control time" id="time" placeholder="0">
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <h4>Test Dimmed mode</h4>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"> Toggle dimmed mode in preview window
+              </label>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <h4>Test Battery level</h4>
+            <div class="form-group">
+              <label for="battery">Battery percentage</label>
+              <input type="number" class="form-control battery" id="battery" placeholder="0">
+            </div>
+          </div>
+        </div>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="NewWatchface" tabindex="-1" role="dialog" aria-labelledby="newWatchfaceLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="newWatchfaceLabel">New Facer Watchface</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="x-offset">Watchface name</label>
+            <input type="text" class="form-control" id="x-offset" placeholder="My own Facer watchface">
+          </div>
+          <div class="form-group">
+            <label for="alignment">Version of your Android wear device</label>
+            <select class="wearversion" id="alignment">
+              <option value="gwatch">LG G Watch</option>
+              <option value="moto360">Moto360</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Begin creating your watchface</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="js/layer.js"></script>
+    <script src="js/script.js"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('.selectface').change(function(event) {
+          /* Act on the event */
+          var value = $(this).val();
+          if(value == "moto360"){
+            $('#overlay').removeClass('off');
+          }else{
+            $('#overlay').addClass('off');
+          }
+        });
+
+
+        $('.tooltiptrigger').tooltip();
+        $('.hideviewlayer').on({
+          click: function() {
+            $( this ).toggleClass( "active" );
+          }, mouseenter: function() {
+            $(this).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
+          }, mouseleave: function() {
+            $(this).removeClass('glyphicon-eye-close').addClass('glyphicon-eye-open');
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
+
