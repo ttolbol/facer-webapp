@@ -56,9 +56,20 @@ function loop() {
     });
 }
 
-function newLayer() {
+function newLayer(type) {
     $("#layerlist li").removeClass("active");
-    $("#layerlist").append("<li layer='" + layers.length + "' class='active'><span class=\"glyphicon glyphicon-eye-open hideviewlayer\"></span><span class=\"glyphicon glyphicon-picture\"></span> Text" + layers.length + "<div class=\"options\"><span class=\"glyphicon glyphicon-tag\"></span><span class=\"glyphicon glyphicon-resize-vertical\"></span></div></li>");
+    if(type == "image"){
+        //image icon
+        icon = "glyphicon-picture";
+    }else if(type == "shape"){
+        //shape icon
+        icon = "glyphicon-heart";
+    }else{
+        //text icon  
+        icon = "glyphicon-font";
+    }
+    //append layer to layerlist
+    $("#layerlist").append("<li layer='" + layers.length + "' class='active'><span class=\"glyphicon glyphicon-eye-open hideviewlayer\"></span><span class=\"glyphicon " + icon + "\"></span> Text" + layers.length + "<div class=\"options\"><span class=\"glyphicon glyphicon-tag\"></span><span class=\"glyphicon glyphicon-resize-vertical\"></span></div></li>");    
     layers.push(new Layer(layers.length, "text"));
     activeLayer = layers[layers.length - 1];
     updateLayerListeners();
