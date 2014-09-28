@@ -9,7 +9,8 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,500italic,700italic,700|Roboto+Condensed:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css'>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/material.css" rel="stylesheet">
+    <link href="css/ripples.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,11 +23,11 @@
     <div class="container-fluid top">
       <div class="container">
         <div class="row">
-          <div class="col-xs-12">
+          <div class="col-md-12">
             <span class="logo"><img src="images/logo.png" alt="Facer web"></span>
 
-            <div class="col-xs-6 pull-right text-right">
-              <button type="button" class="btn btn-default" data-toggle="modal" data-target="#NewWatchface"><span class="glyphicon glyphicon-plus"></span> New Facer Watchface</button>
+            <div class="col-md-6 pull-right text-right">
+              <button type="button" class="btn btn-info" data-toggle="modal" data-target="#NewWatchface"><span class="glyphicon glyphicon-plus"></span> New Facer Watchface</button>
             </div>
           </div>
         </div>
@@ -34,47 +35,47 @@
     </div>
     <div class="container content">
       <div class="row">
-        <div class="col-xs-3">
-          <div class="col-xs-12 card" id="layers">
-            <h4>Layers</h4><a class="floatbtn addlayer tooltiptrigger" id="newlayerbutton" data-toggle="tooltip" data-placement="bottom" title="Add a layer"><span class="glyphicon glyphicon-plus"></span></a>
+        <div class="col-md-3">
+          <div class="col-md-12 card" id="layers">
+            <h4>Layers</h4><a class="floatbtn addlayer tooltiptrigger" id="newlayerbutton" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add a layer"><span class="glyphicon glyphicon-plus"></span></a>
             <ul class="layers" id="layerlist">
-              <li><span class="glyphicon glyphicon-picture"></span> Background <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
+              <!-- <li><span class="glyphicon glyphicon-picture"></span> Background <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
               <li><span class="glyphicon glyphicon-picture"></span> Hour hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
               <li><span class="glyphicon glyphicon-picture"></span> Minute hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
-              <li><span class="glyphicon glyphicon-font"></span> Date <small>(20 aug)</small>  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
+              <li><span class="glyphicon glyphicon-font"></span> Date <small>(20 aug)</small>  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li> -->
             </ul>
           </div>  
         </div>
-        <div class="col-xs-6">
-          <div class="col-xs-12 card">
+        <div class="col-md-6">
+          <div class="col-md-12 card">
             <input id="watchtitle" type="text" value="Untitled watchface"/>
 
             <canvas id="watchcanvas" class="center" width="320" height="320">
             </canvas>
             <div id="overlay" class="center"></div>
-            <!-- <div class="faces">
-              <div class="moto360 center-block"></div>
-              <div class="gearlive center-block"></div>
-              <div class="gwatch center-block"></div>
-            </div> -->
-            <select class="selectface">
-              <option value="moto360">Moto360</option>
-              <option value="gwatch">LG G Watch</option>
-              <!-- <option value="gearlive">Gearlive</option> -->
-            </select>
+
+
+            <div class="form-control-wrapper spacingbottom">
+              <select class="form-control selectface" id="select">
+                <option value="moto360">Moto360</option>
+                <option value="gwatch">LG G Watch</option>
+                <!-- <option value="gearlive">Gearlive</option> -->
+              </select>
+              <span class="material-input"></span>
+            </div>
           </div>  
         </div>
-        <div class="col-xs-3">
-          <div class="col-xs-12 card" id="parameters">
+        <div class="col-md-3">
+          <div class="col-md-12 card" id="parameters">
             <h4>Parameters</h4> <a class="floatbtn addtag tooltiptrigger" data-toggle="tooltip" data-placement="bottom" title="Add a label to this layer"><span class="glyphicon glyphicon-tag"></span></a>
             <form role="form" id="parameterlist">
-              <button type="button" class="btn btn-primary">Select image</button>
+              <a href="#" class="btn btn-primary">Select image</a>
               <div class="panel-group spacingtop" id="accordion">
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Height and Width
+                        Height, Width and Offsets
                       </a>
                     </h4>
                   </div>
@@ -90,22 +91,9 @@
                       </div>
                       <div class="checkbox">
                         <label>
-                          <input type="checkbox"> Maintain aspect ratio when scaling
+                          <input type="checkbox" checked> Maintain aspect ratio when scaling
                         </label>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                        Offsets, Rotation and Opacity
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="panel-body">
                       <div class="form-group">
                         <label for="x-offset">x-offset</label>
                         <input type="number" class="form-control x" id="x-offset" placeholder="0">
@@ -114,10 +102,25 @@
                         <label for="y-offset">y-offset</label>
                         <input type="number" class="form-control y" id="y-offset" placeholder="0">
                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                        Rotation and Opacity
+                      </a>
+                    </h4>
+                  </div>
+                  <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
                       <div class="form-group">
                         <label for="rotation">Rotation</label>
-                        <input type="number" class="form-control" id="rotation" placeholder="0">
+                        <div class="slider"></div>
+                        <!-- <input type="number" class="form-control" id="rotation" placeholder="0"> -->
                       </div>
+                      <!-- <span class="rotvalue"></span> -->
                       <div class="form-group">
                         <label for="opacity">Opacity</label>
                         <input type="number" class="form-control" id="opacity" placeholder="0">
@@ -137,17 +140,20 @@
                     <div class="panel-body">
                       <div class="form-group">
                         <label for="alignment">Aligment</label>
-                        <select class="alignment" id="alignment">
-                          <option value="topLeft">Top left</option>
-                          <option value="topCenter">Top Center</option>
-                          <option value="topRight">Top Right</option>
-                          <option value="centerLeft">Center left</option>
-                          <option value="center">Center</option>
-                          <option value="centerRight">Center Right</option>
-                          <option value="bottomLeft">Bottom left</option>
-                          <option value="bottomCCenter">Bottom Center</option>
-                          <option value="bottomRight">Bottom Right</option>
-                        </select>
+                        <div class="form-control-wrapper spacingbottom">
+                          <select class="form-control alignment" id="alignment">
+                            <option value="topLeft">Top left</option>
+                            <option value="topCenter">Top Center</option>
+                            <option value="topRight">Top Right</option>
+                            <option value="centerLeft">Center left</option>
+                            <option value="center">Center</option>
+                            <option value="centerRight">Center Right</option>
+                            <option value="bottomLeft">Bottom left</option>
+                            <option value="bottomCCenter">Bottom Center</option>
+                            <option value="bottomRight">Bottom Right</option>
+                          </select>
+                          <span class="material-input"></span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -155,30 +161,34 @@
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"> Display when dimmed
+                  <input type="checkbox" checked> Display in Ambient Mode (dimmed)
                 </label>
               </div>
             </form>
           </div>  
         </div>
       </div>
-        <div class="col-xs-12 card spacingtop">
-          <div class="col-xs-3">
+        <div class="col-md-12 card spacingtop">
+          <div class="col-md-3">
             <h4>Test different Weather</h4>
             <div class="form-group">
               <label for="temp">Temperature</label>
               <input type="number" class="form-control temp" id="temp" placeholder="0">
             </div>
             <div class="form-group">
-              <label for="temptype">Temperature type</label>
-              <select class="temptype" id="temptype">
+              <label for="weather">Temperature type</label>
+              <div class="form-control-wrapper spacingbottom">
+                <select class="form-control temptype" id="temptype">
                   <option value="c">Celcius</option>
-                  <option value="f">Fahrenheit</option>
+                <option value="f">Fahrenheit</option>
                 </select>
+                <span class="material-input"></span>
+              </div>
             </div>
             <div class="form-group">
               <label for="weather">Weather type</label>
-              <select class="weather" id="weather">
+              <div class="form-control-wrapper spacingbottom">
+                <select class="form-control weather" id="weather">
                   <option value="sunny">Sunny</option>
                   <option value="cloudy">Cloudy</option>
                   <option value="windy">Windy</option>
@@ -186,9 +196,11 @@
                   <option value="snow">Snow</option>
                   <option value="fog">Fog</option>
                 </select>
+                <span class="material-input"></span>
+              </div>
             </div>
           </div>
-          <div class="col-xs-3">
+          <div class="col-md-3">
             <h4>Test different Time and Date</h4>
             <div class="form-group">
               <label for="date">Date</label>
@@ -200,10 +212,10 @@
             </div>
           </div>
           <div class="col-xs-3">
-            <h4>Test Dimmed mode</h4>
+            <h4>Enable Ambient Mode</h4>
             <div class="checkbox">
               <label>
-                <input type="checkbox"> Toggle dimmed mode in preview window
+                <input type="checkbox"> Toggle Ambient Mode in preview window (dimmed display)
               </label>
             </div>
           </div>
@@ -229,14 +241,18 @@
         <form>
           <div class="form-group">
             <label for="x-offset">Watchface name</label>
-            <input type="text" class="form-control" id="x-offset" placeholder="My own Facer watchface">
+            <input type="text" class="form-control" id="x-offset" placeholder="My Facer watchface">
           </div>
           <div class="form-group">
-            <label for="alignment">Version of your Android wear device</label>
-            <select class="wearversion" id="alignment">
-              <option value="gwatch">LG G Watch</option>
-              <option value="moto360">Moto360</option>
-            </select>
+            <label for="alignment">What kind of Android wear device</label>
+            <div class="form-control-wrapper spacingbottom">
+              <select class="form-control" id="select">
+                <option value="moto360">Moto360</option>
+                <option value="gwatch">LG G Watch</option>
+                <!-- <option value="gearlive">Gearlive</option> -->
+              </select>
+              <span class="material-input"></span>
+            </div>
           </div>
         </form>
       </div>
@@ -254,6 +270,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/material.js"></script>
+    <script src="js/ripples.js"></script>
+    <script src="js/jquery.nouislider.min.js"></script>
+        <script>
+            $(function() {
+                $(".slider").noUiSlider({
+                    start: 40,
+                    range: {
+                        min: 0,
+                        max: 100
+                    }
+                });
+                //$('.rotvalue').html($(".slider").val());
+                
+            });
+        </script>
 
     <script src="js/layer.js"></script>
     <script src="js/script.js"></script>
@@ -271,7 +303,7 @@
         });
 
 
-        $('.tooltiptrigger').tooltip();
+        $('.tooltiptrigger[data-toggle="tooltip"]').tooltip({container: 'body'});
         $('.hideviewlayer').on({
           click: function() {
             $( this ).toggleClass( "active" );
