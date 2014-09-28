@@ -3,6 +3,10 @@ facer-webapp
 
 A webapp for the popular watchface creator app for Android. 
 
+**28-9-2014 Skippy**
+
+* Added material design.
+* Fixed issues with layout.
 
 **25-9-2014 Skippy**
 
