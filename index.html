@@ -1,21 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Facer Web</title>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Facer Web</title>
 
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,500italic,700italic,700|Roboto+Condensed:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css'>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-<<<<<<< HEAD
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/facer.css" rel="stylesheet">
-=======
-    <link href="css/material.css" rel="stylesheet">
-    <link href="css/ripples.css" rel="stylesheet">
->>>>>>> origin/master
+      <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,300italic,500,500italic,700italic,700|Roboto+Condensed:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css'>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link href="css/facer.css" rel="stylesheet">
+      <link href="css/material.css" rel="stylesheet">
+      <link href="css/ripples.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,55 +39,27 @@
           <div class="col-md-12 card" id="layers">
             <h4>Layers</h4><a class="floatbtn addlayer tooltiptrigger" id="newlayerbutton" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Add a layer"><span class="glyphicon glyphicon-plus"></span></a>
             <ul class="layers" id="layerlist">
-<<<<<<< HEAD
+
               
-            </ul>
-          </div>  
-        </div>
-        <div class="col-xs-6">
-          <div class="col-xs-12 card">
-            <input id="watchtitle" type="text" value="✎ Untitled watchface"/>
-=======
-              <!-- <li><span class="glyphicon glyphicon-picture"></span> Background <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
-              <li><span class="glyphicon glyphicon-picture"></span> Hour hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
-              <li><span class="glyphicon glyphicon-picture"></span> Minute hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
-              <li><span class="glyphicon glyphicon-font"></span> Date <small>(20 aug)</small>  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li> -->
             </ul>
           </div>  
         </div>
         <div class="col-md-6">
           <div class="col-md-12 card">
-            <input id="watchtitle" type="text" value="Untitled watchface"/>
->>>>>>> origin/master
+            <input id="watchtitle" type="text" value="✎ Untitled watchface"/>
 
             <canvas id="watchcanvas" class="center" width="320" height="320">
             </canvas>
             <div id="overlay" class="center"></div>
-<<<<<<< HEAD
-            <!-- <div class="faces">
-              <div class="moto360 center-block"></div>
-              <div class="gearlive center-block"></div>
-              <div class="gwatch center-block"></div>
-            </div> -->
               <br>
-            <select class="selectface">
-              <option value="moto360">Moto360</option>
-              <option value="gwatch">LG G Watch</option>
-              <!-- <option value="gearlive">Gearlive</option> -->
-            </select>
-              <br><br>
-=======
-
-
-            <div class="form-control-wrapper spacingbottom">
+          <div class="form-control-wrapper spacingbottom">
               <select class="form-control selectface" id="select">
-                <option value="moto360">Moto360</option>
-                <option value="gwatch">LG G Watch</option>
-                <!-- <option value="gearlive">Gearlive</option> -->
+                  <!-- Load -->
               </select>
               <span class="material-input"></span>
             </div>
->>>>>>> origin/master
+          <br><br>
+
           </div>  
         </div>
         <div class="col-md-3">
@@ -147,13 +114,13 @@
                     <div class="panel-body">
                       <div class="form-group">
                         <label for="rotation">Rotation</label>
-                        <div class="slider"></div>
+                        <div class="slider" id="rotation"></div>
                         <!-- <input type="number" class="form-control" id="rotation" placeholder="0"> -->
                       </div>
                       <!-- <span class="rotvalue"></span> -->
                       <div class="form-group">
                         <label for="opacity">Opacity</label>
-                        <input type="number" class="form-control" id="opacity" placeholder="0">
+                          <div class="slider" id="opacity"></div>
                       </div>
                     </div>
                   </div>
@@ -198,28 +165,17 @@
           </div>  
         </div>
       </div>
-<<<<<<< HEAD
-        <div class="col-xs-12 card spacingtop">
-          <div class="col-xs-3">
-            <h4>Mock Weather</h4>
-=======
         <div class="col-md-12 card spacingtop">
           <div class="col-md-3">
-            <h4>Test different Weather</h4>
->>>>>>> origin/master
+            <h4>Mock Weather</h4>
             <div class="form-group">
               <label for="temp">Temperature</label>
               <input type="number" class="form-control temp" id="temp" value="40">
             </div>
             <div class="form-group">
-<<<<<<< HEAD
-              <label for="temptype">Units</label>
-              <select class="temptype" id="temptype">
-=======
-              <label for="weather">Temperature type</label>
+              <label for="weather">Units</label>
               <div class="form-control-wrapper spacingbottom">
                 <select class="form-control temptype" id="temptype">
->>>>>>> origin/master
                   <option value="c">Celcius</option>
                 <option value="f">Fahrenheit</option>
                 </select>
@@ -227,14 +183,10 @@
               </div>
             </div>
             <div class="form-group">
-<<<<<<< HEAD
               <label for="weather">Forecast</label>
-              <select class="weather" id="weather">
-=======
-              <label for="weather">Weather type</label>
               <div class="form-control-wrapper spacingbottom">
                 <select class="form-control weather" id="weather">
->>>>>>> origin/master
+
                   <option value="sunny">Sunny</option>
                   <option value="cloudy">Cloudy</option>
                   <option value="windy">Windy</option>
@@ -246,13 +198,9 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-          <div class="col-xs-3">
-            <h4>Mock Time and Date</h4>
-=======
+
           <div class="col-md-3">
-            <h4>Test different Time and Date</h4>
->>>>>>> origin/master
+            <h4>Mock Time and Date</h4>
             <div class="form-group">
               <label for="date">Date</label>
               <input type="date" class="form-control date" id="date" placeholder="0">
@@ -272,18 +220,14 @@
             <h4>Mock Battery</h4>
             <div class="form-group">
               <label for="battery">Battery percentage</label>
-              <input type="number" class="form-control battery" id="battery" value="50">
+              <div class="slider" id="battery"></div>
             </div>
           </div>
           <div class="col-xs-3">
-<<<<<<< HEAD
             <h4>Dimmed Mode</h4>
-=======
-            <h4>Enable Ambient Mode</h4>
->>>>>>> origin/master
             <div class="checkbox">
               <label>
-                <input type="checkbox"> Toggle Ambient Mode in preview window (dimmed display)
+                <input type="checkbox"> Preview Ambient Mode (dimmed display)
               </label>
             </div>
           </div>
@@ -306,12 +250,10 @@
             <input type="text" class="form-control" id="x-offset" placeholder="My Facer watchface">
           </div>
           <div class="form-group">
-            <label for="alignment">What kind of Android wear device</label>
+            <label for="alignment">Choose Android Wear Device</label>
             <div class="form-control-wrapper spacingbottom">
-              <select class="form-control" id="select">
-                <option value="moto360">Moto360</option>
-                <option value="gwatch">LG G Watch</option>
-                <!-- <option value="gearlive">Gearlive</option> -->
+              <select class="form-control selectface" id="select">
+                <!-- Load -->
               </select>
               <span class="material-input"></span>
             </div>
@@ -337,15 +279,27 @@
     <script src="js/jquery.nouislider.min.js"></script>
         <script>
             $(function() {
-                $(".slider").noUiSlider({
-                    start: 40,
+                $("#rotation").noUiSlider({
+                    start: 0,
                     range: {
                         min: 0,
                         max: 100
                     }
                 });
-                //$('.rotvalue').html($(".slider").val());
-                
+                $('#opacity').noUiSlider({
+                    start:100,
+                    range: {
+                        min: 0,
+                        max:100
+                    }
+                });
+                $('#battery').noUiSlider({
+                    start:60,
+                    range: {
+                        min:0,
+                        max:100
+                    }
+                });
             });
         </script>
 
@@ -355,15 +309,18 @@
     <script type="text/javascript">
       $(document).ready(function() {
         $('.selectface').change(function(event) {
-          /* Act on the event */
-          var value = $(this).val();
-          if(value == "moto360"){
-            $('#overlay').removeClass('off');
-          }else{
-            $('#overlay').addClass('off');
-          }
+          faceChange(this);
         });
 
+          function faceChange(eve){ 
+            /* Act on the event */
+              var value = $(eve).val();
+              if(watchManager.find(value).round === true){
+                $('#overlay').removeClass('off');
+              }else{
+                $('#overlay').addClass('off');
+              }  
+          } 
 
         $('.tooltiptrigger[data-toggle="tooltip"]').tooltip({container: 'body'});
         $('.hideviewlayer').on({

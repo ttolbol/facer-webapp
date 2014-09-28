@@ -46,10 +46,13 @@ $(document).ready(function() {
     layerManager.add(new Layer("Hour Hand", IMAGE));
     layerManager.add(new Layer("Minute Hand", IMAGE));
     layerManager.add(new Layer("Date", TEXT, {text: "20 aug"}));
-/*    <li><span class="glyphicon glyphicon-picture"></span> Background <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
-              <li><span class="glyphicon glyphicon-picture"></span> Hour hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
-              <li><span class="glyphicon glyphicon-picture"></span> Minute hand  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>
-              <li><span class="glyphicon glyphicon-font"></span> Date <small>(20 aug)</small>  <div class="options"><span class="glyphicon glyphicon-tag"></span><span class="glyphicon glyphicon-cog"></span><span class="glyphicon glyphicon-resize-vertical"></span></div></li>*/
+
+    //Select face
+    var out = "";
+    for(i in watchManager.watches) {
+        out += watchManager.watches[i].toSelect();   
+    }
+    $('.selectface').html(out);
 });
 
 function loop() {
