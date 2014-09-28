@@ -138,3 +138,30 @@ function LayerManager() {
     }
 }
 layerManager = new LayerManager();
+
+function Watch(id, name, round) {
+    this.id = id;
+    this.name = name;   
+    this.round = round;
+    Watch.prototype.toSelect = function() {
+        return '<option value="'+this.id+'">'+this.name+'</option>';
+    }
+    Watch.prototype.getName = function() {
+        return this.name;   
+    };
+    Watch.prototype.getId = function() {
+        return this.id;  
+    };
+}
+function WatchManager() {
+    this.watches = {gwatch: new Watch("gwatch", "LG G Watch", false), moto360: new Watch("moto360", "Moto360", true)};
+    WatchManager.prototype.find = function(name) {
+        for(i in this.watches) {
+            if(this.watches[i].getName() == name || this.watches[i].getId() == name) {
+                return this.watches[i];
+            }   
+        }
+        return false;
+    };
+}
+watchManager = new WatchManager();
