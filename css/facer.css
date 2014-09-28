@@ -1,0 +1,20 @@
+
+
+
+
+.top {
+    z-index: 2;   
+}
+input[type='date'] {
+    padding-right:0px;   
+}
+#watchtitle {
+    width:calc(100% - 14px);
+}
+#alignment {
+    width:100%;   
+}
+.layers li:hover .layerName, .layers li:hover .primaryIcons {
+    opacity: 0.5;   
+    transition-duration: 0.5s
+}
