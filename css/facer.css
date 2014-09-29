@@ -1,15 +1,5 @@
-
-
-
-
-.top {
-    z-index: 2;   
-}
 input[type='date'] {
     padding-right:0px;   
-}
-#watchtitle {
-    width:calc(100% - 14px);
 }
 #alignment {
     width:100%;   
