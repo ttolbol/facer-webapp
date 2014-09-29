@@ -1,0 +1,348 @@
+<!-- Use these forms for the parameter lists of any type. just inject them when needed -->
+
+<!-- Image Parameter list -->
+<form role="image" id="parameterlist">
+  <a href="#" class="btn btn-primary">Select image</a>
+  <div class="panel-group spacingtop" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Height, Width and Offsets
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="width">Width</label>
+            <input type="number" class="form-control" id="width" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="height">Height</label>
+            <input type="number" class="form-control" id="height" placeholder="0">
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" checked> Maintain aspect ratio when scaling
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="x-offset">x-offset</label>
+            <input type="number" class="form-control x" id="x-offset" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="y-offset">y-offset</label>
+            <input type="number" class="form-control y" id="y-offset" placeholder="0">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Rotation and Opacity
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="rotation">Rotation</label>
+            <div class="slider" id="rotation"></div>
+            <input type="text" class="form-control" id="rotationinput">
+          </div>
+          <div class="form-group">
+            <label for="opacity">Opacity</label>
+            <div class="slider" id="opacity"></div>
+            <input type="text" class="form-control" id="opacityinput">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Alignment
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="alignment">Aligment</label>
+            <div class="form-control-wrapper spacingbottom">
+              <select class="form-control alignment" id="alignment">
+                <option value="topLeft">Top left</option>
+                <option value="topCenter">Top Center</option>
+                <option value="topRight">Top Right</option>
+                <option value="centerLeft">Center left</option>
+                <option value="center">Center</option>
+                <option value="centerRight">Center Right</option>
+                <option value="bottomLeft">Bottom left</option>
+                <option value="bottomCCenter">Bottom Center</option>
+                <option value="bottomRight">Bottom Right</option>
+              </select>
+              <span class="material-input"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" checked> Display in Ambient Mode (dimmed)
+    </label>
+  </div>
+</form>
+
+
+<!-- Shape Paramater list -->
+<!-- Some shapes have different inputs, for now i only have the inputs for a square present -->
+<form role="shape" id="parameterlist">
+  <div class="form-group">
+    <label for="shape">Shape</label>
+    <div class="form-control-wrapper spacingbottom">
+      <select class="form-control shape" id="shape">
+        <option value="circle">Circle</option>
+        <option value="square">Square</option>
+        <option value="polygon">Polygon</option>
+        <option value="line">Line</option>
+        <option value="triangle">Triangle</option>
+      </select>
+      <span class="material-input"></span>
+    </div>
+  </div>
+  <div class="panel-group spacingtop" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Height, Width and Offsets
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="width">Width</label>
+            <input type="number" class="form-control" id="width" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="height">Height</label>
+            <input type="number" class="form-control" id="height" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="x-offset">x-offset</label>
+            <input type="number" class="form-control x" id="x-offset" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="y-offset">y-offset</label>
+            <input type="number" class="form-control y" id="y-offset" placeholder="0">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Rotation and Opacity
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="rotation">Rotation</label>
+            <div class="slider" id="rotation"></div>
+            <input type="text" class="form-control" id="rotationinput">
+          </div>
+          <div class="form-group">
+            <label for="opacity">Opacity</label>
+            <div class="slider" id="opacity"></div>
+            <input type="text" class="form-control" id="opacityinput">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Shape options and Color
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="shapeoptions">Shape option</label>
+            <div class="form-control-wrapper spacingbottom">
+              <select class="form-control shapeoptions" id="shapeoptions">
+                <option value="fill">Fill</option>
+                <option value="stroke">Stroke</option>
+              </select>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <label for="color">Color</label>
+          <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
+          <input type="color" id="color">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" checked> Display in Ambient Mode (dimmed)
+    </label>
+  </div>
+</form>
+
+<!-- Text Parameter list -->
+<form role="text" id="parameterlist">
+  <div class="form-group">
+    <label for="width">Text content</label>
+    <input type="text" class="form-control" id="textContent" placeholder="0">
+    <!-- todo: icon -->
+  </div>
+
+  <div class="panel-group spacingtop" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            Text size and Offsets
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="width">Text Size</label>
+            <input type="number" class="form-control" id="textSize" placeholder="10">
+          </div>
+          <div class="form-group">
+            <label for="x-offset">x-offset</label>
+            <input type="number" class="form-control x" id="x-offset" placeholder="0">
+          </div>
+          <div class="form-group">
+            <label for="y-offset">y-offset</label>
+            <input type="number" class="form-control y" id="y-offset" placeholder="0">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Rotation and Opacity
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="rotation">Rotation</label>
+            <div class="slider" id="rotation"></div>
+            <input type="text" class="form-control" id="rotationinput">
+          </div>
+          <div class="form-group">
+            <label for="opacity">Opacity</label>
+            <div class="slider" id="opacity"></div>
+            <input type="text" class="form-control" id="opacityinput">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Font family, Options and Alignment
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="font">Font</label>
+            <div class="form-control-wrapper spacingbottom">
+              <select class="form-control font" id="font">
+                <option value="robotoThin">Roboto Thin</option>
+                <option value="robotoLight">Roboto Light</option>
+                <option value="robotoLightCondensed">Roboto Light Condensed</option>
+                <option value="roboto">Roboto</option>
+                <option value="robotoBlack">Roboto Black</option>
+                <option value="robotoCondensed">Roboto Condensed</option>
+                <option value="robotoSlabThin">Roboto Slab Thin</option>
+                <option value="robotoSlabLight">Roboto Slab Light</option>
+                <option value="robotoSlab">Roboto Slab</option>
+                <!-- Todo: this need to trigger some kind of font selection or upload -->
+                <option value="custom">Custom</option>
+              </select>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <div class="checkbox spacingbottom">
+            <label>
+              <input type="checkbox" id="bold"> <strong>Bold</strong>
+            </label>
+          </div>
+          <div class="checkbox spacingbottom">
+            <label>
+              <input type="checkbox" id="italic"> <i>Italic</i>
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="textAlignment">Text Alignment</label>
+            <div class="form-control-wrapper spacingbottom">
+              <select class="form-control textAlignment" id="textAlignment">
+                <option value="left">Left</option>
+                <option value="center">Center</option>
+                <option value="right">Right</option>
+              </select>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="textTransform">Text Transform</label>
+            <div class="form-control-wrapper spacingbottom">
+              <select class="form-control textTransform" id="textTransform">
+                <option value="none">None</option>
+                <option value="uppercase">All Uppercase</option>
+                <option value="lowercase">All Lowercase</option>
+              </select>
+              <span class="material-input"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="color">Color</label>
+            <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
+            <input type="color" id="color">
+          </div>
+          <div class="form-group">
+            <label for="bgcolor">Background color</label>
+            <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
+            <input type="color" id="bgcolor">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" checked> Display in Ambient Mode (dimmed)
+    </label>
+  </div>
+  <div class="form-group">
+    <label for="dimmedcolor">Dimmed color</label>
+    <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
+    <input type="color" id="dimmedcolor">
+  </div>
+</form>

@@ -62,7 +62,7 @@ function Layer(id, type, data) {
 //This will be the actual function to output to the layer list -- thus the OO model will be easier to update
 //TODO Create a layerManager Class 
 Layer.prototype.toLayerHTML = function() {
-    var out= "<li layer='" + layerManager.length + "' class='active'><span class='primaryIcons'>&nbsp;<span class=\"glyphicon glyphicon-eye-open hideviewlayer\"></span><span class=\"glyphicon glyphicon-" + new LayerType(this.type).icon + "\"></span></span> <span class='layerName'>" + this.id;
+    var out= "<li layer='" + layerManager.length + "' class='active'><span class='primaryIcons'>&nbsp;<span class=\"glyphicon glyphicon-eye-open togglelayer\"></span><span class=\"glyphicon glyphicon-" + new LayerType(this.type).icon + "\"></span></span> <span class='layerName'>" + this.id;
     if(this.type == TEXT)
         out += "&nbsp;<small>("+this.text+")</small>";
     out += "</span><div class=\"options\"><span class=\"glyphicon glyphicon-tag\"></span><span class=\"glyphicon glyphicon-resize-vertical\"></span></div></li>";
@@ -154,7 +154,7 @@ function Watch(id, name, round) {
     };
 }
 function WatchManager() {
-    this.watches = {gwatch: new Watch("gwatch", "LG G Watch", false), moto360: new Watch("moto360", "Moto360", true)};
+    this.watches = {moto360: new Watch("moto360", "Moto360", true), gwatch: new Watch("gwatch", "LG G Watch", false)};
     WatchManager.prototype.find = function(name) {
         for(i in this.watches) {
             if(this.watches[i].getName() == name || this.watches[i].getId() == name) {

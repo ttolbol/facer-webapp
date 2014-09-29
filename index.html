@@ -46,50 +46,44 @@
         </div>
         <div class="col-md-6">
           <div class="col-md-12 card">
-            <input id="watchtitle" type="text" value="✎ Untitled watchface"/>
+            <span class="glyphicon glyphicon-pencil edittitle"></span><input id="watchtitle" type="text" value="Untitled watchface"/>
 
             <canvas id="watchcanvas" class="center" width="320" height="320">
             </canvas>
             <div id="overlay" class="center"></div>
-              <br>
-          <div class="form-control-wrapper spacingbottom">
+            <div class="form-control-wrapper watchfacecontainer">
               <select class="form-control selectface" id="select">
                   <!-- Load -->
               </select>
               <span class="material-input"></span>
             </div>
-          <br><br>
 
           </div>  
         </div>
         <div class="col-md-3">
           <div class="col-md-12 card" id="parameters">
             <h4>Parameters</h4> <a class="floatbtn addtag tooltiptrigger" data-toggle="tooltip" data-placement="bottom" title="Add a label to this layer"><span class="glyphicon glyphicon-tag"></span></a>
-            <form role="form" id="parameterlist">
-              <a href="#" class="btn btn-primary">Select image</a>
+            <form role="text" id="parameterlist">
+              <div class="form-group" style="position: relative;">
+                <label for="width">Text content</label>
+                <input type="text" class="form-control" id="textContent" placeholder="0">
+                <a class="floatbtn togglecheatsheet tooltiptrigger" data-toggle="tooltip" data-placement="bottom" title="Open the tag cheatsheet"><span class="glyphicon glyphicon-book"></span></a>
+              </div>
+
               <div class="panel-group spacingtop" id="accordion">
                 <div class="panel panel-default">
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Height, Width and Offsets
+                        Text size and Offsets
                       </a>
                     </h4>
                   </div>
                   <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="panel-body">
                       <div class="form-group">
-                        <label for="width">Width</label>
-                        <input type="number" class="form-control" id="width" placeholder="0">
-                      </div>
-                      <div class="form-group">
-                        <label for="height">Height</label>
-                        <input type="number" class="form-control" id="height" placeholder="0">
-                      </div>
-                      <div class="checkbox">
-                        <label>
-                          <input type="checkbox" checked> Maintain aspect ratio when scaling
-                        </label>
+                        <label for="width">Text Size</label>
+                        <input type="number" class="form-control" id="textSize" placeholder="10">
                       </div>
                       <div class="form-group">
                         <label for="x-offset">x-offset</label>
@@ -115,12 +109,12 @@
                       <div class="form-group">
                         <label for="rotation">Rotation</label>
                         <div class="slider" id="rotation"></div>
-                        <!-- <input type="number" class="form-control" id="rotation" placeholder="0"> -->
+                        <input type="text" class="form-control" id="rotationinput">
                       </div>
-                      <!-- <span class="rotvalue"></span> -->
                       <div class="form-group">
                         <label for="opacity">Opacity</label>
-                          <div class="slider" id="opacity"></div>
+                        <div class="slider" id="opacity"></div>
+                        <input type="text" class="form-control" id="opacityinput">
                       </div>
                     </div>
                   </div>
@@ -129,28 +123,72 @@
                   <div class="panel-heading">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                        Alignment
+                        Font family, Options and Alignment
                       </a>
                     </h4>
                   </div>
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="panel-body">
                       <div class="form-group">
-                        <label for="alignment">Aligment</label>
+                        <label for="font">Font</label>
                         <div class="form-control-wrapper spacingbottom">
-                          <select class="form-control alignment" id="alignment">
-                            <option value="topLeft">Top left</option>
-                            <option value="topCenter">Top Center</option>
-                            <option value="topRight">Top Right</option>
-                            <option value="centerLeft">Center left</option>
-                            <option value="center">Center</option>
-                            <option value="centerRight">Center Right</option>
-                            <option value="bottomLeft">Bottom left</option>
-                            <option value="bottomCCenter">Bottom Center</option>
-                            <option value="bottomRight">Bottom Right</option>
+                          <select class="form-control font" id="font">
+                            <option value="robotoThin">Roboto Thin</option>
+                            <option value="robotoLight">Roboto Light</option>
+                            <option value="robotoLightCondensed">Roboto Light Condensed</option>
+                            <option value="roboto">Roboto</option>
+                            <option value="robotoBlack">Roboto Black</option>
+                            <option value="robotoCondensed">Roboto Condensed</option>
+                            <option value="robotoSlabThin">Roboto Slab Thin</option>
+                            <option value="robotoSlabLight">Roboto Slab Light</option>
+                            <option value="robotoSlab">Roboto Slab</option>
+                            <!-- Todo: this need to trigger some kind of font selection or upload -->
+                            <option value="custom">Custom</option>
                           </select>
                           <span class="material-input"></span>
                         </div>
+                      </div>
+                      <div class="checkbox spacingbottom">
+                        <label>
+                          <input type="checkbox" id="bold"> <strong>Bold</strong>
+                        </label>
+                      </div>
+                      <div class="checkbox spacingbottom">
+                        <label>
+                          <input type="checkbox" id="italic"> <i>Italic</i>
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label for="textAlignment">Text Alignment</label>
+                        <div class="form-control-wrapper spacingbottom">
+                          <select class="form-control textAlignment" id="textAlignment">
+                            <option value="left">Left</option>
+                            <option value="center">Center</option>
+                            <option value="right">Right</option>
+                          </select>
+                          <span class="material-input"></span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="textTransform">Text Transform</label>
+                        <div class="form-control-wrapper spacingbottom">
+                          <select class="form-control textTransform" id="textTransform">
+                            <option value="none">None</option>
+                            <option value="uppercase">All Uppercase</option>
+                            <option value="lowercase">All Lowercase</option>
+                          </select>
+                          <span class="material-input"></span>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="color">Color</label>
+                        <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
+                        <input type="color" id="color">
+                      </div>
+                      <div class="form-group">
+                        <label for="bgcolor">Background color</label>
+                        <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
+                        <input type="color" id="bgcolor">
                       </div>
                     </div>
                   </div>
@@ -160,6 +198,11 @@
                 <label>
                   <input type="checkbox" checked> Display in Ambient Mode (dimmed)
                 </label>
+              </div>
+              <div class="form-group">
+                <label for="dimmedcolor">Dimmed color</label>
+                <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
+                <input type="color" id="dimmedcolor">
               </div>
             </form>
           </div>  
@@ -221,6 +264,7 @@
             <div class="form-group">
               <label for="battery">Battery percentage</label>
               <div class="slider" id="battery"></div>
+              <input type="text" class="form-control" value="" id="batteryinput">
             </div>
           </div>
           <div class="col-xs-3">
@@ -234,6 +278,39 @@
         </div>
     </div>
       <br><br>
+
+<!-- Cheatsheet for tags -->
+<!-- TODO: Not done yet, maybe need another way to show this long list. I'll atleast make it scrollable -->
+<div id="cheatsheet" class="hidepanel">
+<a class="floatbtn togglecheatsheet tooltiptrigger hiden" data-toggle="tooltip" data-placement="right" title="Show cheatsheet"><span></span></a>
+
+  <h4>Tags Cheatsheet</h4>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Tag</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tr>
+    <td></td>
+    <td><strong>Time</strong></td>
+    <td></td>
+  </tr>
+  <tr>
+    <!-- TODO: tag onclick needs to append itself to the last focused input field? -->
+    <td>#Dy#</td>
+    <td>Year</td>
+    <td>2014</td>
+  </tr>
+  <tr>
+    <td>Needs</td>
+    <td>more</td>
+    <td>data</td>
+  </tr>
+  </table>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="NewWatchface" tabindex="-1" role="dialog" aria-labelledby="newWatchfaceLabel" aria-hidden="true">
@@ -267,9 +344,6 @@
     </div>
   </div>
 </div>
-
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -281,25 +355,40 @@
             $(function() {
                 $("#rotation").noUiSlider({
                     start: 0,
+                    step: 1,
                     range: {
                         min: 0,
                         max: 100
-                    }
+                    },
+                    format: wNumb({
+                      decimals: 0
+                    })
                 });
+                $('#rotation').Link('lower').to($("#rotationinput"));
                 $('#opacity').noUiSlider({
                     start:100,
+                    step: 1,
                     range: {
                         min: 0,
                         max:100
-                    }
+                    },
+                    format: wNumb({
+                      decimals: 0
+                    })
                 });
+                $('#opacity').Link('lower').to($("#opacityinput"));
                 $('#battery').noUiSlider({
                     start:60,
+                    step: 1,
                     range: {
                         min:0,
                         max:100
-                    }
+                    },
+                    format: wNumb({
+                      decimals: 0
+                    })
                 });
+                $('#battery').Link('lower').to($("#batteryinput"));
             });
         </script>
 
@@ -312,20 +401,50 @@
           faceChange(this);
         });
 
-          function faceChange(eve){ 
-            /* Act on the event */
-              var value = $(eve).val();
+          function faceChange(e){
+              var value = $(e).val();
               if(watchManager.find(value).round === true){
                 $('#overlay').removeClass('off');
               }else{
                 $('#overlay').addClass('off');
-              }  
-          } 
+              }
+          }
+
+        $('.addtag').popover({
+          content: '<input type=\"text\" class=\"form-control\" id=\"labelname\" placeholder=\"Label 1\">',
+          html: true,
+          placement: 'left',
+          template: '<div class=\"popover\" role=\"tooltip\"><div class=\"arrow\"></div><div class=\"popover-content\"></div></div>'
+        });
+
+
+        $('.togglecheatsheet').click(function() {
+          $('#cheatsheet').toggleClass('hidepanel');
+          $(this).toggleClass('hiden');
+          
+          //TODO: lazy way, needs work, but its to get an idea for now.
+          title = $("#cheatsheet .togglecheatsheet").attr('data-original-title');
+          if(title == "Hide cheatsheet"){
+            $("#cheatsheet .togglecheatsheet").attr('data-original-title', 'Show cheatsheet');
+          }else{
+            $("#cheatsheet .togglecheatsheet").attr('data-original-title', 'Hide cheatsheet');
+          }
+
+
+        });
+        
+
+        $('.edittitle').click(function(event) {
+          $('#watchtitle').focus();
+        });
 
         $('.tooltiptrigger[data-toggle="tooltip"]').tooltip({container: 'body'});
-        $('.hideviewlayer').on({
+
+        $('.togglelayer').on({
           click: function() {
-            $( this ).toggleClass( "active" );
+            //todo: use this class to hide or enable a layer on the canvas
+            $( this ).parents('li').toggleClass("hidelayer");
+            //todo: @skippy, create classes for on/off of the eye.
           }, mouseenter: function() {
             $(this).removeClass('glyphicon-eye-open').addClass('glyphicon-eye-close');
           }, mouseleave: function() {
