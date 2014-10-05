@@ -45,9 +45,9 @@ function Layer(id, type, data) {
     this.low_power = true;
     this.opacity = 100;
     this.size = 24;
-    this.index = 0;
+    this.index = layerManager.length;
 
-    if (type === "text") {
+    if (type === TEXT) {
         this.text = data.text || this.id;
         this.color = "#FFF";
         this.bgcolor = "#000";
@@ -56,46 +56,96 @@ function Layer(id, type, data) {
         this.bold = false;
         this.italic = true;
         this.transform = DEFAULT_TEXT;
+    } else if(type === IMAGE) {
+        this.height = 320;
+        this.hash = "";
+        this.width = 320;
+    } else if(type === SHAPE) {
+        this.stroke_size = 6;
+        this.shape_opt = 0; //Not sure what this means
+        this.radius = 320;
+        this.shape_type = 1; //Not sure whatthis meanns
+        this.sides = 6;
     }
+    //This will be the actual function to output to the layer list -- thus the OO model will be easier to update
+    Layer.prototype.toLayerHTML = function() {
+        var out= "<li layer='" + layerManager.length + "' class='active'><span class='primaryIcons'>&nbsp;<span class=\"glyphicon glyphicon-eye-open hideviewlayer\"></span><span class=\"glyphicon glyphicon-" + new LayerType(this.type).icon + "\"></span></span> <span class='layerName'>" + this.id;
+        if(this.type == TEXT)
+            out += "&nbsp;<small>("+this.text+")</small>";
+        out += "</span><div class=\"options\"><span class=\"glyphicon glyphicon-tag\"></span><span class=\"glyphicon glyphicon-resize-vertical\"></span></div></li>";
+        return out;
+    };
+    Layer.prototype.toJSON = function() {
+        var j = {id: this.index, type:this.type, alignment: this.alignment, opacity: this.opacity, x: this.x, y: this.y, low_power: this.lower_power, r: this.r};
+        j = new LayerType(this.type).toJSON(j, this);
+        return j;
+    };
+    Layer.prototype.draw = function(cn) {
+        new LayerType(this.type).draw(this, cn);
+    };
 }
 
-//This will be the actual function to output to the layer list -- thus the OO model will be easier to update
-//TODO Create a layerManager Class 
-Layer.prototype.toLayerHTML = function() {
-    var out= "<li layer='" + layerManager.length + "' class='active'><span class='primaryIcons'>&nbsp;<span class=\"glyphicon glyphicon-eye-open hideviewlayer\"></span><span class=\"glyphicon glyphicon-" + new LayerType(this.type).icon + "\"></span></span> <span class='layerName'>" + this.id;
-    if(this.type == TEXT)
-        out += "&nbsp;<small>("+this.text+")</small>";
-    out += "</span><div class=\"options\"><span class=\"glyphicon glyphicon-tag\"></span><span class=\"glyphicon glyphicon-resize-vertical\"></span></div></li>";
-    return out;
-}
-Layer.prototype.draw = function(ctx) {
-    if (this.type === "text") {
-        if (this.alignment === LEFT_ALIGN) {
-            ctx.textAlign = "left";
-        } else if (this.alignment === CENTER_ALIGN) {
-            ctx.textAlign = "center";
-        }
-        else if (this.alignment === RIGHT_ALIGN) {
-            ctx.textAlign = "right";
-        }
-
-        ctx.font = this.size+"px "+fonts[0];
-        ctx.fillStyle = this.color;
-        ctx.fillText(this.text, this.x, this.y);
-    }
-};
 //If there are ever more types of things, this class will make it really easy to add another
 function LayerType(name) {
     this.name = name;
     switch(name) {
         case IMAGE:
             this.icon = "picture";
+            this.toJSON = function(json, layer) {
+                json.height = layer.height;
+                json.width = layer.width;
+                json.hash = layer.hash;
+                return json;
+            };
+            this.draw = function(layer, context) {
+
+            };
             break;
         case SHAPE:
             this.icon = "heart";
+            this.toJSON = function(json, layer) {
+                json.width = layer.width;
+                json.stroke_size = layer.stroke_size;
+                json.shape_opt = layer.shape_opt;
+                json.radius = layer.radius;
+                json.shape_type = layer.shape_type;
+                json.sides = layer.sides;
+                return json;
+            };
+            this.draw = function(layer, context) {
+  
+            };
             break;
         default: 
             this.icon = "font";
+            this.toJSON = function(json, layer) {
+                json.text = layer.text;
+                if(layer.font_hash !== "")
+                    json.font_hash = layer.font_hash;
+                json.italic = layer.italic;
+                json.bgcolor = layer.bgcolor;
+                json.size = layer.size;
+                json.transform = layer.transform;
+                json.bold = layer.bold;
+                json.color = layer.color; //NOTE I'm seeing some weird values
+                json.font_family = layer.font_family;
+                json.low_power_color = layer.low_power_color;
+                return json;
+            };
+            this.draw = function(layer, context) {
+                if (layer.alignment === LEFT_ALIGN) {
+                    context.textAlign = "left";
+                } else if (layer.alignment === CENTER_ALIGN) {
+                    context.textAlign = "center";
+                }
+                else if (layer.alignment === RIGHT_ALIGN) {
+                    context.textAlign = "right";
+                }
+
+                context.font = layer.size+"px "+fonts[0];
+                context.fillStyle = layer.color;
+                context.fillText(layer.text, layer.x, layer.y);   
+            };
     }
 }
 function LayerManager() {
@@ -113,6 +163,7 @@ function LayerManager() {
         updateLayerListeners();
         updateParams();
         this.length = this.layers.length;
+        loop();
     };
     //Can find a layer from it's id, or returns false if not
     LayerManager.prototype.find = function(id, case_sensitive) {
@@ -134,8 +185,30 @@ function LayerManager() {
     };  
     LayerManager.prototype.delete = function(index) {
         $('li[layer='+index+']').remove();
-        return this.layers.slice(index,index+1);
-    }
+        var deleted = this.layers.slice(index,index+1);
+        loop();
+        return deleted;
+    };
+    LayerManager.prototype.toFacer = function() {
+        var json = [];
+        for(i in this.layers) {
+            json.push(this.layers[i].toJSON());
+        }
+        //Now we have the whole JSON. This goes up to another function which adds in images, fonts, and other elements,
+        //  wraps into a zip, and then serves it as a Blob for the user to download, or maybe cloud functions
+        return json;
+    };
+    LayerManager.prototype.save = function() {
+        //Saves watchface to localStorage
+        var name = document.getElementById("watchtitle").value;
+        localStorage[name.split(" ").join("_")] = JSON.stringify(this.toFacer());
+    };  
+    LayerManager.prototype.load = function(name) {
+        //Loads from localStorage
+        var j = JSON.parse(localStorage[name]);
+        document.getElementById('watchtitle').value = name.split("_").join(" ");
+        this.layers = j;
+    };  
 }
 layerManager = new LayerManager();
 
@@ -154,7 +227,7 @@ function Watch(id, name, round) {
     };
 }
 function WatchManager() {
-    this.watches = {gwatch: new Watch("gwatch", "LG G Watch", false), moto360: new Watch("moto360", "Moto360", true)};
+    this.watches = {moto360: new Watch("moto360", "Moto360", true), gwatch: new Watch("gwatch", "LG G Watch", false)};
     WatchManager.prototype.find = function(name) {
         for(i in this.watches) {
             if(this.watches[i].getName() == name || this.watches[i].getId() == name) {
@@ -165,3 +238,24 @@ function WatchManager() {
     };
 }
 watchManager = new WatchManager();
+function WatchFace(lm) {
+    this.layerManager = lm;
+    this.toZip = function() {
+        var name = document.getElementById("watchtitle").value;
+        this.description_json = {build: "0.90.011", id: "1", title: name, facer_webapp: "true"}; //Description.json generator FIXME id, build
+        this.preview_png = "";
+        this.watchface_json = this.layerManager.toFacer();
+        //TODO Get Images folder with hash as file, fonts as hash with file
+        //Return Blob
+    };
+    //Import blob
+    this.import = function(blob) {
+        
+    };
+    //Return Blob
+    this.export = function() {
+        var blob = this.toZip();
+    };
+    
+}
+watchFace = new WatchFace(layerManager);

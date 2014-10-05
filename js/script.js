@@ -1,6 +1,6 @@
 layers = [];
 var canvas, ctx;
-var fps = 60;
+var fps = 10;
 var fonts = ["Roboto", "lol"];
 var dragging = false;
 var newmx, newmy, mx, my, pmx, pmy; //Current and previous mouse x and y coordinates
@@ -62,7 +62,7 @@ function loop() {
     mx = newmx;
     my = newmy;
 
-    if (dragging && activeLayer) {
+    if (dragging && layerManager.activeLayer) {
         layerManager.activeLayer.x += mx - pmx;
         layerManager.activeLayer.y += my - pmy;
         updateParams();
@@ -70,13 +70,23 @@ function loop() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    for (var i = 0; i < layers.length; i++) {
+    for (i in layerManager.layers) {
         layerManager.layers[i].draw(ctx);
     }
 
     requestAnimFrame(function() {
         loop();
     });
+    
+    if(layerManager.activeLayer === undefined)
+        return;
+    
+    //Layer selected loop
+    if(layerManager.activeLayer.type === TEXT) {
+        $('.panel-text').show();   
+    } else {
+        $('.panel-text').hide();   
+    }
 }
 
 function newLayer(type) {
