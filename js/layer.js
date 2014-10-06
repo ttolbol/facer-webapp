@@ -85,7 +85,6 @@ function Layer(id, type, data) {
     };
 }
 
-
 //If there are ever more types of things, this class will make it really easy to add another
 function LayerType(name) {
     this.name = name;
