@@ -62,11 +62,7 @@ function loop() {
     mx = newmx;
     my = newmy;
 
-<<<<<<< HEAD
     if (dragging && layerManager.activeLayer) {
-=======
-    if (dragging && activeLayer) {
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
         layerManager.activeLayer.x += mx - pmx;
         layerManager.activeLayer.y += my - pmy;
         updateParams();
@@ -74,11 +70,7 @@ function loop() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-<<<<<<< HEAD
     for (i in layerManager.layers) {
-=======
-    for (var i = 0; i < layers.length; i++) {
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
         layerManager.layers[i].draw(ctx);
     }
 
