@@ -3206,13 +3206,64 @@ body{
 }
 .card{
   background: #fff;
+  -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.17);
+  -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.17);
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.17);
+  /*padding: 15px;*/
+  /*position: relative;*/
+}
+#cheatsheet{
+  position: fixed;
+  z-index: 600;
+  left: 10px;
+  top: 100px;
   background: #fff;
   -webkit-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.17);
   -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.17);
-  box-shadow: 0px 3px 3px 
+  box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.17); 
   padding: 15px;
-  position: relative;
+  -webkit-transition: all 0.5s ease;                  
+  -moz-transition: all 0.5s ease;                 
+  -o-transition: all 0.5s ease;   
+  -ms-transition: all 0.5s ease;          
+  transition: all 0.5s ease;
+}
+#cheatsheet.hidepanel{
+  left: -203px;
+  -webkit-transition: all 0.5s ease;                  
+  -moz-transition: all 0.5s ease;                 
+  -o-transition: all 0.5s ease;   
+  -ms-transition: all 0.5s ease;          
+  transition: all 0.5s ease;
+}
 
+#cheatsheet .togglecheatsheet span{
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#cheatsheet .togglecheatsheet span:before{
+  content: "\e079";
+}
+#cheatsheet .togglecheatsheet.hiden span{
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#cheatsheet .togglecheatsheet.hiden span:before{
+  content: "\e080";
 }
 
 /*Layers */
@@ -3240,6 +3291,9 @@ body{
   -o-transition: all 0.5s ease;   
   -ms-transition: all 0.5s ease;          
   transition: all 0.5s ease;
+}
+.popover-content input[type="text"]{
+  color: #fff;
 }
 .layers{
   padding-left: 0;
@@ -3303,6 +3357,7 @@ body{
     border: none;
     background: #FFF;
     margin-top: 15px;
+    padding-left: 30px;
     transition: background 0.5s;
     -webkit-transition: background 0.5s;
     -moz-transition: background 0.5s;
@@ -3312,8 +3367,12 @@ body{
 #watchtitle:hover {
     background: #FAFAFA;
 }
-
-
+.edittitle{
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  cursor: text;
+}
 #watchcanvas {
     background: #000;
     display: block;
@@ -3334,4 +3393,8 @@ body{
     margin: -320px auto 0 auto;
     position: relative;
     z-index: 100;
+}
+.watchfacecontainer{
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
