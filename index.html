@@ -46,15 +46,8 @@
         </div>
         <div class="col-md-6">
           <div class="col-md-12 card">
-<<<<<<< HEAD
-<<<<<<< HEAD
-            ✎&nbsp;<input id="watchtitle" type="text" style='width:90%' value="Untitled watchface"/>
-=======
             <span class="glyphicon glyphicon-pencil edittitle"></span><input id="watchtitle" type="text" value="Untitled watchface"/>
->>>>>>> Inputs for sliders, cheatsheet and parameterlists
-=======
-            <span class="glyphicon glyphicon-pencil edittitle"></span><input id="watchtitle" type="text" value="Untitled watchface"/>
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
+
 
             <canvas id="watchcanvas" class="center" width="320" height="320">
             </canvas>
@@ -70,26 +63,13 @@
         </div>
         <div class="col-md-3">
           <div class="col-md-12 card" id="parameters">
-<<<<<<< HEAD
-<<<<<<< HEAD
             <h4>Layer Parameters</h4> <a class="floatbtn addtag tooltiptrigger" data-toggle="tooltip" data-placement="bottom" title="Add a label to this layer"><span class="glyphicon glyphicon-tag"></span></a>
-            <form role="form" id="parameterlist">
-              <a href="#" class="btn btn-primary">Select image</a>
-=======
-=======
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
-            <h4>Parameters</h4> <a class="floatbtn addtag tooltiptrigger" data-toggle="tooltip" data-placement="bottom" title="Add a label to this layer"><span class="glyphicon glyphicon-tag"></span></a>
             <form role="text" id="parameterlist">
               <div class="form-group" style="position: relative;">
                 <label for="width">Text content</label>
                 <input type="text" class="form-control" id="textContent" placeholder="0">
                 <a class="floatbtn togglecheatsheet tooltiptrigger" data-toggle="tooltip" data-placement="bottom" title="Open the tag cheatsheet"><span class="glyphicon glyphicon-book"></span></a>
               </div>
-
-<<<<<<< HEAD
->>>>>>> Inputs for sliders, cheatsheet and parameterlists
-=======
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
               <div class="panel-group spacingtop" id="accordion">
                 <div class="panel panel-default">
                   <div class="panel-heading">
@@ -185,8 +165,6 @@
                             <option value="left">Left</option>
                             <option value="center">Center</option>
                             <option value="right">Right</option>
-<<<<<<< HEAD
-=======
                           </select>
                           <span class="material-input"></span>
                         </div>
@@ -198,13 +176,11 @@
                             <option value="none">None</option>
                             <option value="uppercase">All Uppercase</option>
                             <option value="lowercase">All Lowercase</option>
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
                           </select>
                           <span class="material-input"></span>
                         </div>
                       </div>
                       <div class="form-group">
-<<<<<<< HEAD
                         <label for="textTransform">Text Transform</label>
                         <div class="form-control-wrapper spacingbottom">
                           <select class="form-control textTransform" id="textTransform">
@@ -216,8 +192,6 @@
                         </div>
                       </div>
                       <div class="form-group">
-=======
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
                         <label for="color">Color</label>
                         <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
                         <input type="color" id="color">
@@ -227,7 +201,6 @@
                         <!-- TODO: for now it's an HTML5 input type color, but if we want more people to be able to select a color we need to write something else -->
                         <input type="color" id="bgcolor">
                       </div>
-<<<<<<< HEAD
                     </div>
                   </div>
                 </div>
@@ -253,8 +226,6 @@
                         <label for="low_power_color">Text Color when Dimmed</label>
                         <input type="color" class="form-control" id="lower_power_color" placeholder="0">
                       </div>
-=======
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
                     </div>
                   </div>
                 </div>
@@ -322,7 +293,6 @@
                     <input type="checkbox" id="auto-time" checked>
                     Use Current Date & Time
                 </label>
-<<<<<<< HEAD
             </div>
           </div>
           <div class="col-xs-3">
@@ -339,19 +309,6 @@
             </div>
           </div>
           <div class="col-xs-3">
-=======
-            </div>
-          </div>
-          <div class="col-xs-3">
-            <h4>Mock Battery</h4>
-            <div class="form-group">
-              <label for="battery">Battery percentage</label>
-              <div class="slider" id="battery"></div>
-              <input type="text" class="form-control" value="" id="batteryinput">
-            </div>
-          </div>
-          <div class="col-xs-3">
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
             <h4>Dimmed Mode</h4>
             <div class="checkbox">
               <label>
@@ -447,7 +404,6 @@
                     format: wNumb({
                       decimals: 0
                     })
-<<<<<<< HEAD
                 });
                 $('#rotation').Link('lower').to($("#rotationinput"));
                 $('#opacity').noUiSlider({
@@ -461,21 +417,6 @@
                       decimals: 0
                     })
                 });
-=======
-                });
-                $('#rotation').Link('lower').to($("#rotationinput"));
-                $('#opacity').noUiSlider({
-                    start:100,
-                    step: 1,
-                    range: {
-                        min: 0,
-                        max:100
-                    },
-                    format: wNumb({
-                      decimals: 0
-                    })
-                });
->>>>>>> eeb2c05f036fbdefd0c191e0cc29117b17ac123a
                 $('#opacity').Link('lower').to($("#opacityinput"));
                 $('#battery').noUiSlider({
                     start:60,
