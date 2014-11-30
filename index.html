@@ -322,6 +322,7 @@
 
 <!-- Cheatsheet for tags -->
 <!-- TODO: Not done yet, maybe need another way to show this long list. I'll atleast make it scrollable -->
+<!-- Yes, or even consider collapsible groups using HTML <details> & <summary> elements -->
 <div id="cheatsheet" class="hidepanel">
 <a class="floatbtn togglecheatsheet tooltiptrigger hiden" data-toggle="tooltip" data-placement="right" title="Show cheatsheet"><span></span></a>
 
@@ -334,22 +335,291 @@
       <th>Example</th>
     </tr>
   </thead>
+
+  <!-- Year Tags -->
   <tr>
     <td></td>
-    <td><strong>Time</strong></td>
+    <td><strong>Year</strong></td>
     <td></td>
   </tr>
   <tr>
     <!-- TODO: tag onclick needs to append itself to the last focused input field? -->
     <td>#Dy#</td>
-    <td>Year</td>
+    <td>Four Digits</td>
     <td>2014</td>
   </tr>
   <tr>
-    <td>Needs</td>
-    <td>more</td>
-    <td>data</td>
+      <td>#Dyy#</td>
+      <td>Two Digits</td>
+      <td>14</td>
   </tr>
+  <tr>
+      <td>#Dyyyy#</td>
+      <td>Four Digits</td>
+      <td>2014</td>
+  </tr>
+
+  <!-- Month Tags -->
+  <tr>
+      <td></td>
+      <td><strong>Month</strong></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>#DM#</td>
+      <td>Two Digits</td>
+      <td>11</td>
+  </tr>
+  <tr>
+      <td>#DMM#</td>
+      <td>Two Digits</td>
+      <td>11</td>
+  </tr>
+  <tr>
+      <td>#DMMM#</td>
+      <td>Three letters</td>
+      <td>Nov</td>
+  </tr>
+  <tr>
+      <td>#DMMMM#</td>
+      <td>Full name</td>
+      <td>November</td>
+  </tr>
+
+  <!-- Week Tags -->
+  <tr>
+      <td></td>
+      <td><strong>Week</strong></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>#DW#</td>
+      <td>Week in month</td>
+      <td>3</td>
+  </tr>
+  <tr>
+      <td>#Dw#</td>
+      <td>Week in year</td>
+      <td>49</td>
+  </tr>
+
+  <!-- Day Tags -->
+  <tr>
+      <td></td>
+      <td><strong>Day</strong></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>#DD#</td>
+      <td>Day in year</td>
+      <td>334</td>
+  </tr>
+  <tr>
+      <td>#Dd#</td>
+      <td>Day in month</td>
+      <td>30</td>
+  </tr>
+  <tr>
+      <td>#DE#</td>
+      <td>Day of week 3 characters</td>
+      <td>Sun</td>
+  </tr>
+  <tr>
+      <td>#DEEEE#</td>
+      <td>Day of week fullname</td>
+      <td>Sunday</td>
+  </tr>
+  <tr>
+      <td>#DF#</td>
+      <td>Day of week in month</td>
+      <td>5</td>
+  </tr>
+
+  <!-- Hour Tags -->
+  <tr>
+      <td></td>
+      <td><strong>Hour</strong></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>#Da#</td>
+      <td>AM/PM marker</td>
+      <td>AM</td>
+  </tr>
+  <tr>
+      <td>#Dh#</td>
+      <td>Hour in day AM/PM 1-12</td>
+      <td>12</td>
+  </tr>
+  <tr>
+      <td>#DK#</td>
+      <td>Hour in Day AM/PM 0-11</td>
+      <td>11</td>
+  </tr>
+  <tr>
+      <td>#Dk#</td>
+      <td>Hour in Day 1-24</td>
+      <td>24</td>
+  </tr>
+  <tr>
+      <td>#DH#</td>
+      <td>Hour in Day 0-23</td>
+      <td>23</td>
+  </tr>
+  <tr>
+    <td>#DHZ#</td>
+    <td>Hour in Day leading zeros 00-23</td>
+    <td>09</td>
+  </tr>
+  <tr>
+    <td>#DkZ#</td>
+    <td>hour in day with leading zeros 1-24</td>
+    <td>01</td>
+  </tr>
+  <tr>
+    <td>#DKZ#</td>
+    <td>Hour in Day AM/PM leading zeros 00-11</td>
+    <td>00</td>
+  </tr>
+  <tr>
+    <td>#DhZ#</td>
+    <td>Hour in Day AM/PM leading zeros 01-12</td>
+    <td>01</td>
+  </tr>
+  <tr>
+      <td>#DhoT#</td>
+      <td>Hour hand rotation - 12H</td>
+      <td>330</td>
+  </tr>
+  <tr>
+      <td>#DhoTb#</td>
+      <td>Hour hand rotation 24H</td>
+      <td>165</td>
+  </tr>
+  <tr>
+      <td>#DWFK#</td>
+      <td>Hour hand rotation 12H (WearFace)</td>
+      <td>330</td>
+  </tr>
+  <tr>
+      <td>#DWFH#</td>
+      <td>Hour hand rotation 24H (WearFace)</td>
+      <td>165</td>
+  </tr>
+  <tr>
+      <td>#DWFKS#</td>
+      <td>Hour hand rotation 12H, Smooth (WearFace)</td>
+      <td>165.0</td>
+  </tr>
+  <tr>
+      <td>#DWFHS#</td>
+      <td>Hour hand rotation 24H, Smooth (WearFace)</td>
+      <td>190.0</td>
+  </tr>
+  <tr>
+      <td>#DhT#</td>
+      <td>String value for hour 12H</td>
+      <td>ELEVEN</td>
+  </tr>
+  <tr>
+      <td>#DkT#</td>
+      <td>String value for hour 24H</td>
+      <td>ELEVEN</td>
+  </tr>
+
+  <!-- Minute Tags -->
+  <tr>
+      <td></td>
+      <td><strong>Minute</strong></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>#Dm#</td>
+      <td>Minute in hour</td>
+      <td>53</td>
+  </tr>
+  <tr>
+      <td>#DmZ#</td>
+      <td>Minute in hour leading zero</td>
+      <td>09</td>
+  </tr>
+  <tr>
+      <td>#DmoT#</td>
+      <td>Minute hand rotation</td>
+      <td>318</td>
+  </tr>
+  <tr>
+      <td>#DWFM#</td>
+      <td>Minute hand rotation (WearFace)</td>
+      <td>290</td>
+  </tr>
+  <tr>
+      <td>#DmT#</td>
+      <td>String value for minutes</td>
+      <td>FIFTY THREE</td>
+  </tr>
+  <tr>
+      <td>#DmMT#</td>
+      <td>String valud for minutes - tens</td>
+      <td>FIFTY</td>
+  </tr>
+  <tr>
+      <td>#DmST#</td>
+      <td>String valud for minutes - units</td>
+      <td>THREE</td>
+  </tr>
+
+  <!-- Second Tags -->
+  <tr>
+      <td></td>
+      <td><strong>Second</strong></td>
+      <td></td>
+  </tr>
+  <tr>
+      <td>#Ds#</td>
+      <td>Second in minute</td>
+      <td>9</td>
+  </tr>
+  <tr>
+      <td>#DsZ#</td>
+      <td>Second in minute leading zero</td>
+      <td>09</td>
+  </tr>
+  <tr>
+      <td>#DseT#</td>
+      <td>Second hand rotation</td>
+      <td>192</td>
+  </tr>
+  <tr>
+      <td>#DWFS#</td>
+      <td>Second hand rotation (WearFace)</td>
+      <td>290</td>
+  </tr>
+  <tr>
+      <td>#DWFSS#</td>
+      <td>Second hand rotation smooth</td>
+      <td>214.2</td>
+  </tr>
+
+  <!--
+      TimeZone
+      #Dz# - Timezone - CET
+      #Dzzzz# - Timezone - Central European Time
+
+      Battery
+      #BLP# - battery level percentage - 56%
+      #BLN# - battery level integer - 56
+      #BTC# - battery temperature centigrade - 27C
+      #BTI# - battery temperature farenheit- 27F
+      #BTCN# - battery temperature centigrade integer- 27
+      #BTIN# - battery temperature fahrenheit integer - 27
+      #BS# - battery charging status - Not charging
+
+      Wear
+      #ZLP# - low power mode - false
+      #ZSC# - step count - 0
+      -->
+
   </table>
 </div>
 
